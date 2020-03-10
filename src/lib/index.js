@@ -1,8 +1,3 @@
-import Example from './components/Example';
-import SecondExample from './components/SecondExample';
+import MoneyInput from "./components/CurrencyInput";
 
-export default Example;
-
-export {
-  SecondExample,
-};
+export default MoneyInput;
