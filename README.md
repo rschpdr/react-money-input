@@ -1,5 +1,7 @@
 # React Money Input
 
+![npm (scoped)](https://img.shields.io/npm/v/@rschpdr/react-money-input) ![Node.js CI](https://github.com/rschpdr/react-money-input/workflows/Node.js%20CI/badge.svg)
+
 A currency text input for React that Just Works™
 
 - "ATM style" typing, matches user expectations of how a money input should work
