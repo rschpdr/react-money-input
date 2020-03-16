@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { TextField } from "@material-ui/core";
 import CurrencyInput from "../lib";
 
 const App = props => {
@@ -12,6 +13,13 @@ const App = props => {
     <>
       <div style={{ padding: "1rem" }}>
         <CurrencyInput onChange={handleChange} value={amount} />
+      </div>
+      <div style={{ padding: "1rem" }}>
+        <CurrencyInput
+          onChange={handleChange}
+          value={amount}
+          customInput={TextField}
+        />
       </div>
     </>
   );

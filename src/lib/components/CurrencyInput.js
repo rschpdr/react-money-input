@@ -108,6 +108,7 @@ const CurrencyInput = props => {
   if (customInput) {
     const customProps = { ...props, ...inputProps };
     delete customProps.customInput;
+    delete customProps.currencyConfig;
     const CustomInput = customInput;
     return <CustomInput {...customProps} />;
   }
