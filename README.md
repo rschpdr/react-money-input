@@ -22,7 +22,7 @@ npm install --save @rschpdr/react-money-input currency.js
 
 ```javascript
 import React, { useState } from "react";
-import MoneyInput from "react-money-input";
+import MoneyInput from "@rschpdr/react-money-input";
 
 function Example(props) {
   const [amount, setAmount] = useState(0);
@@ -58,7 +58,7 @@ Simply pass the custom input component as a prop. Pass the custom input props di
 ```javascript
 import React, { useState } from "react";
 import { TextField } from "@material-ui/core";
-import MoneyInput from "react-money-input";
+import MoneyInput from "@rschpdr/react-money-input";
 
 function Example(props) {
   const [amount, setAmount] = useState(0);
