@@ -1,19 +1,41 @@
 {
-  "name": "react-money-input-v2",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@rschpdr/react-money-input",
+  "version": "0.1.2",
+  "description": "A currency text input for React that Just Works™",
+  "author": "rschpdr",
+  "main": "build/index.js",
+  "types": "types/index.d.ts",
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^13.5.0",
+    "@testing-library/user-event": "^14.4.3",
+    "currency.js": "^2.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
+  "peerDependencies": {
+    "currency.js": "^2.0.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rschpdr/react-money-input.git"
+  },
+  "keywords": [
+    "react",
+    "currency",
+    "input",
+    "money"
+  ],
+  "bugs": {
+    "url": "https://github.com/rschpdr/react-money-input/issues"
+  },
+  "license": "MIT",
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -34,5 +56,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.18.10",
+    "@babel/core": "^7.18.13",
+    "@babel/preset-env": "^7.18.10",
+    "@emotion/react": "^11.10.0",
+    "@emotion/styled": "^11.10.0",
+    "@mui/material": "^5.10.1",
+    "formik": "^2.2.9"
   }
 }

@@ -1,70 +1,98 @@
-# Getting Started with Create React App
+# React Money Input
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![npm (scoped)](https://img.shields.io/npm/v/@rschpdr/react-money-input) ![Node.js CI](https://github.com/rschpdr/react-money-input/workflows/Node.js%20CI/badge.svg)
 
-## Available Scripts
+A currency text input for React that Just Works™
 
-In the project directory, you can run:
+- "ATM style" typing, matches user expectations of how a money input should work
+- Uses Intl API to display locale accurate currency representations
+- Supports custom inputs (e.g. Material UI text fields)
+- Returns [`currency.js`](https://github.com/scurker/currency.js/) enforced numeric float values
+- Works out of the box with libs like [`Formik`](https://github.com/jaredpalmer/formik)
 
-### `npm start`
+![](example.gif)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Installation
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+npm install --save @rschpdr/react-money-input currency.js
+```
 
-### `npm test`
+## Quick Start
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```javascript
+import React, { useState } from "react";
+import MoneyInput from "@rschpdr/react-money-input";
 
-### `npm run build`
+function Example(props) {
+  const [amount, setAmount] = useState(0);
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  function handleChange(e) {
+    setAmount(e.target.value);
+  }
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  return <MoneyInput onChange={handleChange} value={amount} />;
+}
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+export default Example;
+```
 
-### `npm run eject`
+## Props
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+| Props          | Options                       | Default                                                                                                                                                                                                          | Description                                                                                                                       |
+| -------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| className      | string                        | ''                                                                                                                                                                                                               | Regular React classname                                                                                                           |
+| style          | Styles object                 | {}                                                                                                                                                                                                               | Regular React styles object                                                                                                       |
+| currencyConfig | Currency configuration object | <ul> <li>locale: string = "en-US"</li> <li>currencyCode: string = "USD"</li> <li>currencyDisplay: string = "symbol"</li> <li>useGrouping: boolean = true</li> <li>minimumFractionDigits: number = undefined</li> | Config options for Number.toLocaleString method. [See more](https://www.techonthenet.com/js/number_tolocalestring.php)            |
+| customInput    | Component Reference           | undefined                                                                                                                                                                                                        | Support for custom inputs e.g. Material UI TextField                                                                              |
+| name           | string                        | undefined                                                                                                                                                                                                        | Regular `name` HTML property                                                                                                      |
+| id             | string                        | undefined                                                                                                                                                                                                        | Regular `id` HTML property                                                                                                        |
+| max            | number                        | Number.MAX_SAFE_INTEGER                                                                                                                                                                                          | Maximum allowed value                                                                                                             |
+| onChange       | (event) => any                | undefined                                                                                                                                                                                                        | `onChange` event handler. `event` is a fake Synthetic Event with only `value`, `name` and `id` properties defined inside `target` |
+| value          | number                        | undefined                                                                                                                                                                                                        | Input value                                                                                                                       |
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Custom Inputs
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Simply pass the custom input component as a prop. Pass the custom input props directly to `MoneyInput`:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```javascript
+import React, { useState } from "react";
+import { TextField } from "@material-ui/core";
+import MoneyInput from "@rschpdr/react-money-input";
 
-## Learn More
+function Example(props) {
+  const [amount, setAmount] = useState(0);
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  function handleChange(e) {
+    setAmount(e.target.value);
+  }
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  return (
+    <MoneyInput
+      customInput={TextField}
+      variant="outlined"
+      label="Custom Input!"
+      onChange={handleChange}
+      value={amount}
+    />
+  );
+}
 
-### Code Splitting
+export default Example;
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Contributing
 
-### Analyzing the Bundle Size
+All contributions welcome! Feel free to [raise issues](https://github.com/rschpdr/react-money-input/issues) or [submit a PR](https://github.com/rschpdr/react-money-input/pulls).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## License
 
-### Making a Progressive Web App
+This project is licensed under the MIT License - see [LICENSE.md](LICENSE.md) for details.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Acknowledgments
 
-### Advanced Configuration
+- Based on [larkintuckerllc/react-currency-input](https://github.com/larkintuckerllc/react-currency-input)
+- Custom input support based on [
+  s-yadav/react-number-format](https://github.com/s-yadav/react-number-format)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Go give them stars!
