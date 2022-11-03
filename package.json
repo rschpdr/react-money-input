@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A currency text input for React that Just Works™",
   "author": "rschpdr",
-  "main": "build/index.js",
+  "main": "dist/index.js",
   "types": "types/index.d.ts",
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
